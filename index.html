@@ -1,44 +1,103 @@
- <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
         body {
-            background: linear-gradient(0, #5eba7d, #0077cc, #e1b604);
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
+  background: linear-gradient(0, #5eba7d, #0077cc, #e1b604);
+  height: 100vh;
+}
 
-        div {
-            display: grid;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+div {
+  display: grid;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-        #text {
-            position: relative;
-            font-size: 2rem; /* Daha büyük yazı boyutu */
-            text-align: center; /* Ortalamak için */
-        }
+#text {
+  position: relative;
+}
 
-        img,
-        #text {
-            grid-row: 1;
-            grid-column: 1;
-            margin: auto;
-        }
+img,
+#text {
+  grid-row: 1;
+  grid-column: 1;
+  margin: auto;
+}
 
-        img:not(.center) {
-            padding-right: 0; /* Mobil için paddingsiz */
-            clip-path: polygon(0% 100%, 0% 0%, 40% 0%, 40% 100%);
-        }
+img:not(.center) {
+  padding-right: 375px;
+  clip-path: polygon(0% 100%, 0% 0%, 40% 0%, 40% 100%);
+}
 
-        img:hover {
-            filter: brightness(105%);
-        }
-
-        @media (max-width: 600px) {
-            #text {
-                font-size: 1.5rem; /* Küçük ekranlar için daha küçük yazı boyutu */
-            }
-        }
+img:hover {
+  filter: brightness(105%);
+}
     </style>
+    <div>
+        <b id=text>pick a petal</b>
+        <img src="https://i.sstatic.net/coLCe.png" class="center">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+        <img src="https://i.sstatic.net/YXBo4.png">
+      </div>
+   <script>
+    let ptl = document.querySelectorAll("img:not(.center)");
+let rot = 360 / ptl.length;
+let rdm = 3;
+let text = document.querySelector("#text");
+let words = ["Belki", "Seviyor", "Sevmiyor"]
+
+function resize() {
+  let scale = document.body.offsetHeight / 650;
+  document.body.style.transform = "scale(" + scale + ")"
+}
+for (let i = 0; i < ptl.length; i++) {
+  ptl[i].addEventListener("click", function() {
+    this.style.opacity = "0";
+    this.style.pointerEvents = "none";
+    let x = Math.floor(Math.random() * words.length);
+    text.innerHTML = words[x];
+  });
+  ptl[i].style.transform = "rotate(" + i * rdm * rot + "deg)";
+}
+
+window.onresize = resize;
+window.onload = resize();
+   </script>
+</body>
+</html>
