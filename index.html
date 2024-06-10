@@ -1,121 +1,44 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koca Gözlü irem</title>
-    <style>
-        body, html {
+ <style>
+        body {
+            background: linear-gradient(0, #5eba7d, #0077cc, #e1b604);
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
             overflow: hidden;
-            font-family: 'Arial', sans-serif;
         }
 
-        .container {
-            text-align: center;
-        }
-
-        h1 {
-            color: #fff;
-            font-size: 3em;
-            margin-bottom: 50px;
-            animation: fadeIn 3s ease-in-out;
-        }
-        h3{
-            margin-top: 50px;
-        }
-
-        .heart {
-            width: 100px;
-            height: 100px;
+        div {
+            display: grid;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            background: red;
-            transform: rotate(-45deg);
-            margin: 0 auto;
-            animation: heartbeat 1.5s infinite;
         }
 
-        .heart::before,
-        .heart::after {
-            content: "";
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: red;
-            position: absolute;
+        #text {
+            position: relative;
+            font-size: 2rem; /* Daha büyük yazı boyutu */
+            text-align: center; /* Ortalamak için */
         }
 
-        .heart::before {
-            top: -50px;
-            left: 0;
+        img,
+        #text {
+            grid-row: 1;
+            grid-column: 1;
+            margin: auto;
         }
 
-        .heart::after {
-            left: 50px;
-            top: 0;
+        img:not(.center) {
+            padding-right: 0; /* Mobil için paddingsiz */
+            clip-path: polygon(0% 100%, 0% 0%, 40% 0%, 40% 100%);
         }
 
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(0.5) rotate(-45deg);
-            }
-            50% {
-                transform: scale(1.2) rotate(-45deg);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .message {
-            display: none;
-            color: #fff;
-            font-size: 2em;
-            margin-top: 20px;
-            animation: fadeIn 3s ease-in-out;
+        img:hover {
+            filter: brightness(105%);
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            .heart {
-                width: 80px;
-                height: 80px;
-            }
-            .heart::before,
-            .heart::after {
-                width: 80px;
-                height: 80px;
+            #text {
+                font-size: 1.5rem; /* Küçük ekranlar için daha küçük yazı boyutu */
             }
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Kalbe Tıkla</h1>
-        <div class="heart"></div>
-        <div class="message" id="message"><h1>İrem seni seviyorum<h1/></div>
-    </div>
-    <script>
-        document.addEventListener('click', function() {
-            var message = document.getElementById('message');
-            message.style.display = 'block';
-        });
-    </script>
-</body>
-</html>
-
