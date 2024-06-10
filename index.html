@@ -229,38 +229,15 @@ Her dokunuşunda, aşkınla dolup taşar ruhum.
   Sen benimle bir, aynı rüyada.
   `,
 ];
-if (window.DeviceMotionEvent) {
-  window.addEventListener('devicemotion', function(event) {
-    var acceleration = event.acceleration;
-    var shakeThreshold = 15; // Sallanma eşiği
 
-    if (Math.abs(acceleration.x) > shakeThreshold ||
-        Math.abs(acceleration.y) > shakeThreshold ||
-        Math.abs(acceleration.z) > shakeThreshold) {
-      
-      // Rastgele bir eleman seçmek için
-      
-      var randomIndex = Math.floor(Math.random() * array.length);
-      var randomElement = array[randomIndex];
-      
-      // Rastgele seçilen elemanı alert ile göster
-      alert(randomElement);
-      
-      // Sallanma algılandığında bir süreliğine algılamayı durdurmak için
-      window.removeEventListener('devicemotion', arguments.callee);
-      setTimeout(function() {
-        window.addEventListener('devicemotion', arguments.callee);
-      }, 1000); // 1 saniye bekle ve yeniden başlat
-    }
-  });
-} else {
-  console.log('DeviceMotionEvent desteklenmiyor.');
-}
 let papin = 0;
     let ptl = document.querySelectorAll("img:not(.center)");
 let rot = 360 / ptl.length;
 let rdm = 3;
 let text = document.querySelector("#text");
+text.addEventListener("click",() => {
+  alert(array[Math.floor(Math.random()*array.length)]);
+})
 let words = ["Belki", "Seviyor", "Sevmiyor"]
 
 function resize() {
